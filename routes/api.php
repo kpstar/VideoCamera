@@ -19,8 +19,8 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'Api\AuthController@login');
 Route::post('register', 'Api\AuthController@register');
-
+Route::post('uploadvideo', 'VideoInfoController@uploadvideo');
 Route::group(['middleware' => 'auth:api'], function(){
-Route::post('details', 'Api\AuthController@details');
-Route::post('uploadvideo', 'Api\AuthController@uploadvideo');
+	Route::post('details', 'Api\AuthController@details');
+
 });

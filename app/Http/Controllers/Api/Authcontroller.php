@@ -53,13 +53,20 @@ class Authcontroller extends Controller
     *
     * @return \Illuminate\Http\Response
     */
-    public function details()
+    public function logout()
+    {
+        // $user = Auth::user();
+        // return response()->json(['success' => $user], $this-> successStatus);
+        return "Success";
+    }
+
+    public function uploadvideo()
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
     }
 
-    public function uploadvideo()
+    public function details()
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
