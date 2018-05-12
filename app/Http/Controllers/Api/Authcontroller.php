@@ -59,4 +59,9 @@ class Authcontroller extends Controller
         return response()->json(['success' => $user], $this-> successStatus);
     }
 
+    public function uploadvideo()
+    {
+        $user = Auth::user();
+        return response()->json(['success' => $user], $this-> successStatus);
+    }
 }
