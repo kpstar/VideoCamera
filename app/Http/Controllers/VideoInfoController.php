@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\VideoInfo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class VideoInfoController extends Controller
 {
@@ -23,13 +22,20 @@ class VideoInfoController extends Controller
 		$video_url = asset('uploads/'.$video_name);
 
 		$videoinfo = new VideoInfo;
-		$videoinfo->videofilename = $video_url;
-		$videoinfo->imgfilename = $image_url;
+		$videoinfo->videofileurl = $video_url;
+		$videoinfo->imgfileurl = $image_url;
 		$videoinfo->coor_lng = $request->longitude;
 		$videoinfo->coor_lat = $request->latitude;
 		$videoinfo->save();
 
 
 		return $image_url;
+	}
+
+	public function posturl ()
+	{
+
+		$videourls = \DB::table('video_infos')->get();
+		return $videourls;
 	}
 }
