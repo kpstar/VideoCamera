@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
-class Authcontroller extends Controller
+class AuthController extends Controller
 {
     public $successStatus = 200;
     /**
