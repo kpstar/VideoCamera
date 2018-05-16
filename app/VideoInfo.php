@@ -10,8 +10,8 @@ class VideoInfo extends Model
 
     protected $guarded = [
       'videofileurl',
-      'imgfileurl',
-      'latitude',
-      'longitude'
+      'address',
+      'user',
+      'createdate'
     ];
 }

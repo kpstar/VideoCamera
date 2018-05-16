@@ -14,28 +14,54 @@ class VideoInfoController extends Controller
 		$randomname = rand(1000, 9999);
 		$createdrandom_name = $randomname.$nowtime;
 		$video_name = $createdrandom_name.".mp4";
-		$image_name = $createdrandom_name.".png";
 		$request->video->move('./uploads/',$video_name);
-		$request->image->move('./uploads/',$image_name);
 
-		$image_url = asset('uploads/'.$image_name);
 		$video_url = asset('uploads/'.$video_name);
 
 		$videoinfo = new VideoInfo;
-		$videoinfo->videofileurl = $video_url;
-		$videoinfo->imgfileurl = $image_url;
-		$videoinfo->coor_lng = $request->longitude;
-		$videoinfo->coor_lat = $request->latitude;
+		$videoinfo->videofileurl = $video_name;
+		$videoinfo->address = $request->address;
+		$videoinfo->createdate = $request->time;
+		$videoinfo->user = $request->user;
 		$videoinfo->save();
 
 
-		return $image_url;
+		return $request;
 	}
 
-	public function posturl ()
+	public function posturl ( Request $request)
 	{
+		$username = $request->username;
+		$videos = VideoInfo::where('user', $username)->get();
+		$final_videos = array();
+		if ($videos) {
+			foreach ($videos as $video) {
+				$final_videos[] = array(
+					'id' => $video->id,
+					'address' => $video->address,
+					'videofileurl' => asset('uploads/'.$video->videofileurl),
+					'createdate' => $video->createdate,
+					'uploaddate' => $video->createdate
+				);
+			}
+		}
 
-		$videourls = \DB::table('video_infos')->get();
-		return $videourls;
+		return response()->json($final_videos);
+	}
+
+	public function removevideo ( Request $request)
+	{
+		$videoInfo = VideoInfo::find($request->url);
+		$fileurl = asset('uploads/'.$videoinfo->videourl);
+		if ($videoInfo) {
+			if(file_exist('uploads/'.$video)){
+				File::delete($url);
+				$str = "Success";
+			} else {
+				$str = "No File";
+			}
+		}
+
+		return $str;
 	}
 }

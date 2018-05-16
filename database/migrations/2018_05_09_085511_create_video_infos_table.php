@@ -15,10 +15,10 @@ class CreateVideoInfosTable extends Migration
     {
         Schema::create('video_infos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('imgfilename');
-            $table->string('videofilename');
-            $table->string('coor_lng')->nullable();
-            $table->string('coor_lat')->nullable();
+            $table->string('user');
+            $table->string('createdate');
+            $table->string('address');
+            $table->string('videofileurl');
             $table->timestamps();
         });
     }

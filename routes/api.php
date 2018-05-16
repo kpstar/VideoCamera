@@ -21,7 +21,7 @@ Route::post('login', 'Api\AuthController@login');
 Route::post('register', 'Api\AuthController@register');
 Route::post('uploadvideo', 'VideoInfoController@uploadvideo');
 Route::post('posturls', 'VideoInfoController@posturl');
+Route::post('removevideo', 'VideoInfoController@removevideo');
 Route::group(['middleware' => 'auth:api'], function(){
 	Route::post('details', 'Api\AuthController@details');
-
 });
