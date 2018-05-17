@@ -51,17 +51,17 @@ class VideoInfoController extends Controller
 
 	public function removevideo ( Request $request)
 	{
-		$videoInfo = VideoInfo::where('videofileurl', $request->url)->first();
-		if ($videoInfo) {
-			$abdpath = 'uploads/'.$videoInfo->videofileurl;
-			
-			if(file_exist($abdpath)){
-				unlink($abdpath);
-			}
-
-			$videoInfo->delete();
-			return "success";
-		}
+		// $videoInfo = VideoInfo::where('videofileurl', $request->url)->first();
+		// if ($videoInfo) {
+		// 	$abdpath = 'uploads/'.$videoInfo->videofileurl;
+		//
+		// 	if(file_exist($abdpath)){
+		// 		unlink($abdpath);
+		// 	}
+		//
+		// 	$videoInfo->delete();
+		// 	return "success";
+		// }
 		return "fail";
 	}
 }
