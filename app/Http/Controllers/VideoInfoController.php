@@ -16,7 +16,8 @@ class VideoInfoController extends Controller
 		$video_name = $createdrandom_name.".mp4";
 		$request->video->move('./uploads/',$video_name);
 
-		$video_url = asset('uploads/'.$video_name);
+		if($video_url = asset('uploads/'.$video_name)
+               {
 
 		$videoinfo = new VideoInfo;
 		$videoinfo->videofileurl = $video_name;
@@ -27,6 +28,8 @@ class VideoInfoController extends Controller
 
 
 		return $request;
+		}
+		return "fail";
 	}
 
 	public function posturl ( Request $request)
