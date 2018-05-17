@@ -55,7 +55,7 @@ class VideoInfoController extends Controller
 		if ($videoInfo) {
 			$abdpath = 'uploads/'.$videoInfo->videofileurl;
 
-			if(file_exist($abdpath)){
+			if(file_exists($abdpath)){
 				unlink($abdpath);
 			}
 
