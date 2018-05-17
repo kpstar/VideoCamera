@@ -14,20 +14,17 @@ class VideoInfoController extends Controller
 		$randomname = rand(1000, 9999);
 		$createdrandom_name = $randomname.$nowtime;
 		$video_name = $createdrandom_name.".mp4";
-		$request->video->move('./uploads/',$video_name);
-
-		if($video_url = asset('uploads/'.$video_name)
-               {
-
-		$videoinfo = new VideoInfo;
-		$videoinfo->videofileurl = $video_name;
-		$videoinfo->address = $request->address;
-		$videoinfo->createdate = $request->time;
-		$videoinfo->user = $request->user;
-		$videoinfo->save();
+		if($request->video->move('./uploads/',$video_name)) {
+			$video_url = asset('uploads/'.$video_name);
+			$videoinfo = new VideoInfo;
+			$videoinfo->videofileurl = $video_name;
+			$videoinfo->address = $request->address;
+			$videoinfo->createdate = $request->time;
+			$videoinfo->user = $request->user;
+			$videoinfo->save();
 
 
-		return $request;
+			return $request;
 		}
 		return "fail";
 	}
